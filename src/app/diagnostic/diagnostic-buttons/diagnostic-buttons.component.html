@@ -1,0 +1,7 @@
+<div>
+  <button *ngIf="canShow(1)" [id]="1">Button 1</button>
+  <button *ngIf="canShow(2)" [id]="2">Button 2</button>
+  <button (click)="showButtonOneAndFive()" *ngIf="canShow(3)" [id]="3">Button 3</button>
+  <button *ngIf="canShow(4)" [id]="4">Button 4</button>
+  <button *ngIf="canShow(5)" [id]="5">Button 5</button>
+</div>

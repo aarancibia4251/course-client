@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {PouchDbService} from './course/service/pouch-db.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'appsteps';
+  constructor(
+    private pouchDbService: PouchDbService,
+  ) {
+  }
 }

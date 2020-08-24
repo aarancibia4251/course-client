@@ -1,5 +1,5 @@
-export class Course {
-  courseId: string;
+export class CourseDb {
+  _id: string;
   courseName: string;
   coursePrice: number;
   courseTeacher: string;
@@ -9,7 +9,7 @@ export class Course {
   idEntity: string;
 
   constructor(
-    courseId: string,
+    _id: string,
     courseName: string,
     coursePrice: number,
     courseTeacher: string,
@@ -18,7 +18,7 @@ export class Course {
     _rev: string,
     idEntity: string
   ) {
-    this.courseId = courseId;
+    this._id = _id;
     this.courseName = courseName;
     this.coursePrice = coursePrice;
     this.courseTeacher = courseTeacher;

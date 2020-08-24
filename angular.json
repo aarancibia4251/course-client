@@ -25,12 +25,21 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/app-sw.js",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app-init.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +132,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "appsteps"
 }

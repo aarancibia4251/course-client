@@ -1,0 +1,50 @@
+<div nz-row>
+  <div nz-col [nzMd]="4"></div>
+  <div nz-col [nzMd]="16">
+    <h1>Crear Cursos</h1>
+    <hr />
+    <form
+      nz-form
+      [formGroup]="coursePresenter.courseFormGroup"
+      class="login-form"
+      (ngSubmit)="saveCourse()"
+    >
+      <nz-form-item>
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="courseName"
+            placeholder="Username"
+          />
+        </nz-input-group>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="text"
+            nz-input
+            formControlName="coursePrice"
+            placeholder="Precio"
+          />
+        </nz-input-group>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-date-picker formControlName="courseCreated" (ngModelChange)="changeDateCalendar($event)"></nz-date-picker>
+      </nz-form-item>
+
+      <button
+        nz-button
+        class="login-form-button login-form-margin"
+        [nzType]="'primary'"
+      >
+        GUARDAR
+      </button>
+    </form>
+  </div>
+  <div nz-col [nzMd]="4"></div>
+</div>
+
+<!-- <nz-form-control nzErrorTip="Please input your Password!">
+
+</nz-form-control> -->

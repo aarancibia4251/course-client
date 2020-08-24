@@ -1,0 +1,22 @@
+{
+  "curso": [
+    {
+      "cursoId": "c3b05281-5e54-4b66-9edb-4478c24bb239",
+      "cursoNombre": "Matematica",
+      "cursoPrecio": 20,
+      "cursoProfesor": "Alexis Arancibia",
+      "cursoCreado": "2020-07-22T23:25:13.261Z",
+      "cursoActualizado": "2020-07-24T23:25:13.261Z"
+    },
+    {
+      "cursoId": "14f11ce5-6fb6-4e36-8413-3e5b0564bd01",
+      "cursoNombre": "Comunicacion",
+      "cursoPrecio": 10,
+      "cursoProfesor": "Jose Espinoza",
+      "cursoCreado": "2020-07-24T19:25:13.261Z",
+      "cursoActualizado": "2020-07-24T23:25:13.261Z"
+    }
+  ],
+  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
+  "profile": { "name": "typicode" }
+}

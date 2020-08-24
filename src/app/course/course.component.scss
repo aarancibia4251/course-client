@@ -1,0 +1,9 @@
+.course {
+  z-index: 9;
+  &__list {
+
+    &--item {
+      padding: 10px;
+    }
+  }
+}

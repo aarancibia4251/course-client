@@ -1,0 +1,17 @@
+<!--<app-diagnostic-averias [titulo]="'Soy el titulo'" [data-step]="'data'">
+  <ng-container Contenido>
+    <div style="padding: 10px;">
+      <strong>Soy el contenido</strong>
+    </div>
+  </ng-container>
+  <ng-container Buttons>
+    <button>No navega</button>
+    <button>Lentitud</button>
+    <button>WiFi</button>
+  </ng-container>
+</app-diagnostic-averias>-->
+<div>
+
+  <app-diagnostic-buttons (buttonsEvent)="getButtonsToShow($event)" [buttonsNeeded]="buttonsList"></app-diagnostic-buttons>
+
+</div>

@@ -1,0 +1,19 @@
+.update {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background-color: #001529;
+  z-index: 10;
+  display: none;
+  div {
+    color: coral;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

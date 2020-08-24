@@ -1,0 +1,6 @@
+<ngx-dropzone [accept]="'.xlsx'" [multiple]="false"  [expandable]="true" (change)="onSelect($event)">
+  <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+  <ngx-dropzone-preview *ngFor="let file of files" [removable]="true" (removed)="onRemove(files)">
+    <ngx-dropzone-label>{{ file?.name }} ({{ file?.type }})</ngx-dropzone-label>
+  </ngx-dropzone-preview>
+</ngx-dropzone>

@@ -1,6 +1,6 @@
-import { Course } from './course.model';
+import { CourseDb } from './course-db.model';
 
-export class CourseBuilder {
+export class CourseDbBuilder {
   private _courseId: string;
   private _courseName: string;
   private _coursePrice: number;
@@ -8,50 +8,50 @@ export class CourseBuilder {
   private _courseCreated: Date;
   private _courseUpdated: Date;
   private _rev: string;
-  private _idEntity: string;
+  private idEntity: string;
 
-  setCourseId(value: string): CourseBuilder {
+  setCourseId(value: string): CourseDbBuilder {
     this._courseId = value;
     return this;
   }
 
-  setCourseName(value: string): CourseBuilder {
+  setCourseName(value: string): CourseDbBuilder {
     this._courseName = value;
     return this;
   }
 
-  setCoursePrice(value: number): CourseBuilder {
+  setCoursePrice(value: number): CourseDbBuilder {
     this._coursePrice = value;
     return this;
   }
 
-  setCourseTeacher(value: string): CourseBuilder {
+  setCourseTeacher(value: string): CourseDbBuilder {
     this._courseTeacher = value;
     return this;
   }
 
-  setCourseCreated(value: Date): CourseBuilder {
+  setCourseCreated(value: Date): CourseDbBuilder {
     this._courseCreated = value;
     return this;
   }
 
-  setCourseUpdated(value: Date): CourseBuilder {
+  setCourseUpdated(value: Date): CourseDbBuilder {
     this._courseUpdated = value;
     return this;
   }
 
-  setIdEntity(value: string): CourseBuilder {
-    this._idEntity = value;
+  setIdEntity(value: string): CourseDbBuilder {
+    this.idEntity = value;
     return this;
   }
 
-  setRev(value: string): CourseBuilder {
+  setRev(value: string): CourseDbBuilder {
     this._rev = value;
     return this;
   }
 
-  create(): Course {
-    return new Course(
+  create(): CourseDb {
+    return new CourseDb(
       this._courseId,
       this._courseName,
       this._coursePrice,
@@ -59,7 +59,7 @@ export class CourseBuilder {
       this._courseCreated,
       this._courseUpdated,
       this._rev,
-      this._idEntity,
+      this.idEntity
     );
   }
 }
