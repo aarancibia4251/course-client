@@ -1,17 +1,19 @@
 export class CourseEntity {
-  cursoId: string;
-  cursoNombre: string;
-  cursoPrecio: number;
-  cursoProfesor: string;
-  cursoCreado: string;
-  cursoActualizado: string;
+  Id: string;
+  Nombre: string;
+  Precio: number;
+  Profesor: string;
+  FechaRegistro: string;
+  FechaCreacion: string;
+  FechaModificacion: string;
 
-  constructor(cursoId: string, cursoNombre: string, cursoPrecio: number, cursoProfesor: string, cursoCreado: string, cursoActualizado: string) {
-    this.cursoId = cursoId;
-    this.cursoNombre = cursoNombre;
-    this.cursoPrecio = cursoPrecio;
-    this.cursoProfesor = cursoProfesor;
-    this.cursoCreado = cursoCreado;
-    this.cursoActualizado = cursoActualizado;
+  constructor(cursoId: string, cursoNombre: string, cursoPrecio: number, cursoProfesor: string, cursoRegistro: string, cursoCreado: string, cursoActualizado: string) {
+    this.Id = cursoId;
+    this.Nombre = cursoNombre;
+    this.Precio = cursoPrecio;
+    this.Profesor = cursoProfesor;
+    this.FechaRegistro = cursoRegistro;
+    this.FechaCreacion = cursoCreado;
+    this.FechaModificacion = cursoActualizado;
   }
 }

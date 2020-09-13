@@ -7,7 +7,7 @@ export class CoursePresenter {
   public courseName: FormControl;
   public coursePrice: FormControl;
   public courseTeacher: FormControl;
-  public courseCreated: FormControl;
+  public courseRegister: FormControl;
 
   constructor(private fb: FormBuilder) {
     this.courseFormGroup = this.createCourseForm();
@@ -21,19 +21,19 @@ export class CoursePresenter {
     this.courseName.setValue(course.courseName);
     this.coursePrice.setValue(course.coursePrice);
     this.courseTeacher.setValue(course.courseTeacher);
-    this.courseCreated.setValue(course.courseCreated);
+    this.courseRegister.setValue(course.courseRegister);
   }
 
   createCourseForm(): FormGroup {
     this.courseName = new FormControl(null);
     this.coursePrice = new FormControl(null);
     this.courseTeacher = new FormControl(null);
-    this.courseCreated = new FormControl(DateHelper.getCurrentDate());
+    this.courseRegister = new FormControl(DateHelper.getCurrentDate());
     return this.fb.group({
       courseName: this.courseName,
       coursePrice: this.coursePrice,
       courseTeacher: this.courseTeacher,
-      courseCreated: this.courseCreated,
+      courseRegister: this.courseRegister,
     });
   }
 }

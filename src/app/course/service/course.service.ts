@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { Course } from '../model/course.model';
 import { environment } from '../../../environments/environment';
@@ -8,32 +8,40 @@ import { CourseMapper } from '../mapper/CourseMapper';
 import { CourseEntity } from '../model/course-entity.model';
 import { CourseDbService } from './course-db.service';
 import { resolve } from 'dns';
+import {bodyCourseToSave} from "../dto/course-dto.interface";
+import {SuccessPouch} from "../model/success-pouch";
+import {DateHelper} from "../../utils/DateHelper";
+import {StorageService} from "./storage.service";
+import {Constants} from "../../utils/Constants";
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  private courseUrl = environment.apiUrl + 'curso';
+  private courseUrl = environment.apiUrl + 'api/course';
   courseMapper = new CourseMapper();
   constructor(
     private httpClient: HttpClient,
-    private courseDbService: CourseDbService
+    private courseDbService: CourseDbService,
+    private storageSrv: StorageService,
   ) {}
 
-  tryToGetAndSaveCourses(): Promise<boolean> {
+  async tryToGetAndSaveCourses(): Promise<boolean> {
+    const dateSync = await this.storageSrv.getItem(Constants.SYNC);
+    let params = new HttpParams();
+    if (dateSync) {
+      params = params.append('dateSync', dateSync);
+    }
     return new Promise<boolean>((resolve, reject) => {
       this.httpClient
-        .get(this.courseUrl, {})
+        .get(this.courseUrl, { params })
         .subscribe((res: Array<CourseEntity>) => {
-          const listCourseDb = this.courseMapper.mapperFromListWsToListDb(
-            res
-          );
+          const listCourseDb = this.courseMapper.mapperFromListWsToListDb(res);
           this.courseDbService
             .getAndSaveFromRest(listCourseDb)
             .then((x) => resolve(true))
             .catch((e) => resolve(false));
         }, e => {
-          console.log(e.error);
           reject(e);
         });
     });
@@ -47,7 +55,18 @@ export class CourseService {
     });
   }
 
-  saveCourse(course: Course): Observable<CourseEntity> {
-    return null;
+  saveCourse(course: Course): Promise<CourseEntity> {
+    return new Promise<CourseEntity>(((resolve, reject) => {
+      const courseToSave: bodyCourseToSave = {
+        Id: course.courseId,
+        Nombre: course.courseName,
+        Precio: course.coursePrice,
+        FechaCreacion: DateHelper.getDateToStringISO(course.courseCreated),
+        FechaModificacion: DateHelper.getDateToStringISO(course.courseUpdated),
+        FechaRegistro: DateHelper.getDateToStringISO(course.courseRegister)
+      };
+      this.httpClient.post(this.courseUrl, courseToSave)
+        .subscribe((courseSaved: CourseEntity) => resolve(courseSaved), error => reject(error));
+    }));
   }
 }

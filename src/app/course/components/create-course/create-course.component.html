@@ -1,7 +1,7 @@
 <div nz-row>
   <div nz-col [nzMd]="4"></div>
   <div nz-col [nzMd]="16">
-    <h1>Crear Cursos</h1>
+    <h1>Registro de Curso</h1>
     <hr />
     <form
       nz-form
@@ -16,6 +16,7 @@
             nz-input
             formControlName="courseName"
             placeholder="Username"
+            required
           />
         </nz-input-group>
       </nz-form-item>
@@ -26,17 +27,19 @@
             nz-input
             formControlName="coursePrice"
             placeholder="Precio"
+            required
           />
         </nz-input-group>
       </nz-form-item>
       <nz-form-item>
-        <nz-date-picker formControlName="courseCreated" (ngModelChange)="changeDateCalendar($event)"></nz-date-picker>
+        <nz-date-picker required formControlName="courseRegister" (ngModelChange)="changeDateCalendar($event)"></nz-date-picker>
       </nz-form-item>
 
       <button
         nz-button
         class="login-form-button login-form-margin"
         [nzType]="'primary'"
+        type="submit"
       >
         GUARDAR
       </button>

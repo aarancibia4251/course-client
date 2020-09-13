@@ -27,6 +27,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/app-sw.js",
+              "src/pouchdb.min.js",
+              "src/utils.js",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { CourseDbService } from './service/course-db.service';
 import { DateHelper } from '../utils/DateHelper';
 import {CoursePresenter} from './components/create-course/course.presenter';
+import {StorageService} from "./service/storage.service";
+import {Constants} from "../utils/Constants";
 
 @Component({
   selector: 'app-course',
@@ -20,6 +22,7 @@ export class CourseComponent implements OnInit {
     private courseService: CourseService,
     private router: Router,
     private courseDbService: CourseDbService,
+    private storageSrv: StorageService,
   ) {}
 
   ngOnInit(): void {
@@ -32,15 +35,16 @@ export class CourseComponent implements OnInit {
       .then(
         async (value) => {
           // show snackbar sincronizado
-          console.log('SDFSDFSDFDSFSD', value);
+          console.log('sync');
         },
         (e) => {
           // show navbar no sincronizado
-          console.log('error');
+          console.log('no sync');
         }
       )
       .finally(() => {
         this.listCourseObs$ = from(this.courseDbService.getAllCoursesFromDb());
+        this.storageSrv.setItem(Constants.SYNC, DateHelper.getCurrentDate());
       });
   }
 

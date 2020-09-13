@@ -1,17 +1,18 @@
 import { CourseDb } from './course-db.model';
 
 export class CourseDbBuilder {
-  private _courseId: string;
+  private _id: string;
   private _courseName: string;
   private _coursePrice: number;
   private _courseTeacher: string;
+  private _courseRegister: Date;
   private _courseCreated: Date;
   private _courseUpdated: Date;
   private _rev: string;
   private idEntity: string;
 
   setCourseId(value: string): CourseDbBuilder {
-    this._courseId = value;
+    this._id = value;
     return this;
   }
 
@@ -27,6 +28,11 @@ export class CourseDbBuilder {
 
   setCourseTeacher(value: string): CourseDbBuilder {
     this._courseTeacher = value;
+    return this;
+  }
+
+  setCourseRegister(value: Date) {
+    this._courseRegister = value;
     return this;
   }
 
@@ -52,10 +58,11 @@ export class CourseDbBuilder {
 
   create(): CourseDb {
     return new CourseDb(
-      this._courseId,
+      this._id,
       this._courseName,
       this._coursePrice,
       this._courseTeacher,
+      this._courseRegister,
       this._courseCreated,
       this._courseUpdated,
       this._rev,

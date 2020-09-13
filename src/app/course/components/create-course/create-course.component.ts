@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../../model/course.model';
 import { CourseBuilder } from '../../model/course.model.builder';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { CourseDbService } from '../../service/course-db.service';
 import { CoursePresenter } from './course.presenter';
 import { FormBuilder } from '@angular/forms';
+import {DateHelper} from "../../../utils/DateHelper";
+import {Guid} from "guid-typescript";
+import {Constants} from "../../../utils/Constants";
+import { CourseDataRepositoryService } from '../../repository/course-data-repository.service';
+import {ErrorService} from "../../../shared/services/error.service";
+import {SuccessService} from "../../../shared/services/success.service";
 
 @Component({
   selector: 'app-create-course',
@@ -17,7 +23,11 @@ export class CreateCourseComponent implements OnInit {
   coursePresenter: CoursePresenter = new CoursePresenter(new FormBuilder());
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private courseDbService: CourseDbService,
+    private courseRepository: CourseDataRepositoryService,
+    private errorSrv: ErrorService,
+    private successSrv: SuccessService,
   ) {
     this.activatedRoute.params.subscribe(({ id }) => (this.courseId = id));
     if (this.courseId) {
@@ -41,8 +51,22 @@ export class CreateCourseComponent implements OnInit {
     });
   }
 
-  saveCourse() {
-    console.log(this.coursePresenter.getDataFromForm());
+  async saveCourse() {
+    if (this.coursePresenter.courseFormGroup.invalid) {
+      return;
+    }
+    try {
+      if (this.courseId) {
+        await this.courseRepository.updateCourse(this.createCourseModel());
+      } else {
+        const course = this.createCourseModel();
+        await this.courseRepository.saveCourse(course);
+        this.courseId = course.courseId;
+      }
+      this.successSrv.showBasicSuccess('Course', 'Se registraron los datos');
+    } catch (e) {
+      this.errorSrv.showBasicError('Course', 'No se pudo guardar los datos');
+    }
   }
 
   changeDateCalendar(changedDate) {
@@ -50,11 +74,16 @@ export class CreateCourseComponent implements OnInit {
   }
 
   private createCourseModel(): Course {
+    const course: Course = this.coursePresenter.getDataFromForm();
+    const currentTime = DateHelper.getCurrentDate();
+    course.courseRegister.setHours(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds(), 0);
     return new CourseBuilder()
-      .setCourseId('ASVA')
-      .setCourseName('Matematca')
-      .setCoursePrice(15)
-      .setCourseTeacher('Alexis Arancibia')
+      .setCourseId(this.courseId ? this.courseId : Guid.create().toString())
+      .setCourseName(course.courseName)
+      .setCoursePrice(course.coursePrice)
+      .setCourseRegister(course.courseRegister)
+      .setCourseUpdated(DateHelper.getCurrentDate())
+      .setIdEntity(Constants.ENTITIES.COURSE_ENTITY)
       .create();
   }
 }

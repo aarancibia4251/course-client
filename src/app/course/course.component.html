@@ -1,7 +1,10 @@
 <div class="course" nz-row>
   <div nz-col [nzMd]="4"></div>
   <div nz-col [nzMd]="16">
-    <h1>Bandeja de Cursos</h1>
+    <div nz-row [nzJustify]="'space-between'">
+      <h1>Bandeja de Cursos</h1>
+      <a routerLink="/crear">Nuevo Curso</a>
+    </div>
     <hr />
     <nz-list class="course__list" nzBordered nzSize="small">
       <nz-list-item
@@ -9,7 +12,7 @@
         (click)="goToEditCourse(course)"
         *ngFor="let course of listCourseObs$ | async"
       >
-        {{ course.courseName }} -- {{ course.courseCreated | date: 'dd/MM/yyyy HH:ss' }}
+        {{ course.courseName }} -- {{ course.courseRegister | date: 'dd/MM/yyyy hh:mm' }}
       </nz-list-item>
     </nz-list>
   </div>

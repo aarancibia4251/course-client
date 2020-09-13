@@ -5,6 +5,7 @@ export class CourseBuilder {
   private _courseName: string;
   private _coursePrice: number;
   private _courseTeacher: string;
+  private _courseRegister: Date;
   private _courseCreated: Date;
   private _courseUpdated: Date;
   private _rev: string;
@@ -27,6 +28,11 @@ export class CourseBuilder {
 
   setCourseTeacher(value: string): CourseBuilder {
     this._courseTeacher = value;
+    return this;
+  }
+
+  setCourseRegister(value: Date) {
+    this._courseRegister = value;
     return this;
   }
 
@@ -56,6 +62,7 @@ export class CourseBuilder {
       this._courseName,
       this._coursePrice,
       this._courseTeacher,
+      this._courseRegister,
       this._courseCreated,
       this._courseUpdated,
       this._rev,

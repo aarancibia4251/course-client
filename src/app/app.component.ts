@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {PouchDbService} from './course/service/pouch-db.service';
+import { Constants } from './utils/Constants';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import {PouchDbService} from './course/service/pouch-db.service';
 })
 export class AppComponent {
   title = 'appsteps';
+  dateSync = localStorage.getItem(Constants.SYNC);
   constructor(
     private pouchDbService: PouchDbService,
   ) {

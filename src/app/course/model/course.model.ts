@@ -3,6 +3,7 @@ export class Course {
   courseName: string;
   coursePrice: number;
   courseTeacher: string;
+  courseRegister: Date;
   courseCreated: Date;
   courseUpdated: Date;
   _rev: string;
@@ -13,6 +14,7 @@ export class Course {
     courseName: string,
     coursePrice: number,
     courseTeacher: string,
+    courseRegister: Date,
     courseCreated: Date,
     courseUpdated: Date,
     _rev: string,
@@ -22,6 +24,7 @@ export class Course {
     this.courseName = courseName;
     this.coursePrice = coursePrice;
     this.courseTeacher = courseTeacher;
+    this.courseRegister = courseRegister;
     this.courseCreated = courseCreated;
     this.courseUpdated = courseUpdated;
     this._rev = _rev;

@@ -5,6 +5,7 @@ export class CourseEntityBuilder {
   private _cursoNombre: string;
   private _cursoPrecio: number;
   private _cursoProfesor: string;
+  private _courseRegister: string;
   private _cursoCreado: string;
   private _cursoActualizado: string;
 
@@ -28,6 +29,11 @@ export class CourseEntityBuilder {
     return this;
   }
 
+  setCourseRegister(value: string) {
+    this._courseRegister = value;
+    return this;
+  }
+
   setCursoCreado(value: string): CourseEntityBuilder {
     this._cursoCreado = value;
     return this;
@@ -44,6 +50,7 @@ export class CourseEntityBuilder {
       this._cursoNombre,
       this._cursoPrecio,
       this._cursoProfesor,
+      this._courseRegister,
       this._cursoCreado,
       this._cursoActualizado,
     );

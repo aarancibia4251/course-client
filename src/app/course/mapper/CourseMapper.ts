@@ -12,12 +12,13 @@ export class CourseMapper
   implements AdapterMapper<Course, CourseDb, CourseEntity> {
   mapperFromWsToModel(item: CourseEntity): Course {
     return new CourseBuilder()
-      .setCourseId(item.cursoId)
-      .setCourseName(item.cursoNombre)
-      .setCoursePrice(item.cursoPrecio)
-      .setCourseTeacher(item.cursoProfesor)
-      .setCourseCreated(DateHelper.wsStringToDate(item.cursoCreado))
-      .setCourseUpdated(DateHelper.wsStringToDate(item.cursoActualizado))
+      .setCourseId(item.Id)
+      .setCourseName(item.Nombre)
+      .setCoursePrice(item.Precio)
+      .setCourseTeacher(item.Profesor)
+      .setCourseRegister(DateHelper.wsStringToDate(item.FechaRegistro))
+      .setCourseCreated(DateHelper.wsStringToDate(item.FechaCreacion))
+      .setCourseUpdated(DateHelper.wsStringToDate(item.FechaModificacion))
       .create();
   }
   mapperFromListWsToListModel(list: CourseEntity[]): Course[] {
@@ -26,12 +27,13 @@ export class CourseMapper
   }
   mapperFromWsToDb(item: CourseEntity): CourseDb {
     return new CourseDbBuilder()
-      .setCourseId(item.cursoId)
-      .setCourseName(item.cursoNombre)
-      .setCoursePrice(item.cursoPrecio)
-      .setCourseTeacher(item.cursoProfesor)
-      .setCourseCreated(DateHelper.wsStringToDate(item.cursoCreado))
-      .setCourseUpdated(DateHelper.wsStringToDate(item.cursoActualizado))
+      .setCourseId(item.Id)
+      .setCourseName(item.Nombre)
+      .setCoursePrice(item.Precio)
+      .setCourseTeacher(item.Profesor)
+      .setCourseRegister(DateHelper.wsStringToDate(item.FechaRegistro))
+      .setCourseCreated(DateHelper.wsStringToDate(item.FechaCreacion))
+      .setCourseUpdated(DateHelper.wsStringToDate(item.FechaModificacion))
       .setIdEntity(Constants.ENTITIES.COURSE_ENTITY)
       .create();
   }
@@ -45,6 +47,7 @@ export class CourseMapper
       .setCourseName(item.courseName)
       .setCoursePrice(item.coursePrice)
       .setCourseTeacher(item.courseTeacher)
+      .setCourseRegister(item.courseRegister)
       .setCourseCreated(item.courseCreated)
       .setCourseUpdated(item.courseUpdated)
       .setIdEntity(Constants.ENTITIES.COURSE_ENTITY)
@@ -57,6 +60,7 @@ export class CourseMapper
       .setCourseName(item.courseName)
       .setCoursePrice(item.coursePrice)
       .setCourseTeacher(item.courseTeacher)
+      .setCourseRegister(item.courseRegister)
       .setCourseCreated(item.courseCreated)
       .setCourseUpdated(item.courseUpdated)
       .setIdEntity(item.idEntity)

@@ -43,12 +43,29 @@ export class PouchDbService {
               update.id,
               update.rev,
               update.ok,
-              model._rev ? 'Actualizado Correctamente' : 'Credo Correctamente'
+              model._rev ? 'Actualizado Correctamente' : 'Creado Correctamente'
             )
           );
         })
         .catch((e) => reject(e));
     });
+  }
+
+  remove(model): Promise<boolean> {
+    return new Promise<boolean>((async (resolve, reject) => {
+      try {
+        const existModel = await this.db.get(model._id);
+        if (existModel) {
+          this.db.remove(model)
+            .then(res => {
+              resolve(res);
+            })
+            .catch(e => reject(e));
+        }
+      } catch (e) {
+        reject(e);
+      }
+    }));
   }
 
   getDocumentsByEntity(idEntity: string): Promise<any> {

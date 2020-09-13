@@ -16,7 +16,7 @@ export class CourseDbService {
   getAndSaveFromRest(
     listCourseDb: Array<CourseDb>
   ): Promise<Array<SuccessPouch>> {
-    return new Promise<Array<any>>((resolve, reject) => {
+    return new Promise<Array<SuccessPouch>>((resolve, reject) => {
       const promiseCourses = [];
       for (const courseDb of listCourseDb) {
         promiseCourses.push(this.pouchDbService.put(courseDb._id, courseDb));
@@ -51,5 +51,27 @@ export class CourseDbService {
           (e) => reject(e)
         );
     });
+  }
+
+  saveCourse(courseDb: CourseDb): Promise<SuccessPouch> {
+    return new Promise<SuccessPouch>((async (resolve, reject) => {
+      try {
+        const succesSaved = await this.pouchDbService.put(courseDb._id, courseDb);
+        resolve(succesSaved);
+      } catch (e) {
+        reject(e);
+      }
+    }));
+  }
+
+  deleteCourse(courseDb: CourseDb): Promise<boolean> {
+    return new Promise<boolean>((async (resolve, reject) => {
+      try {
+        await this.pouchDbService.remove(courseDb);
+        resolve(true);
+      } catch (e) {
+        reject(e);
+      }
+    }));
   }
 }
