@@ -39,7 +39,10 @@ export class CourseService {
           const listCourseDb = this.courseMapper.mapperFromListWsToListDb(res);
           this.courseDbService
             .getAndSaveFromRest(listCourseDb)
-            .then((x) => resolve(true))
+            .then((x) => {
+              this.storageSrv.setItem(Constants.SYNC, DateHelper.getCurrentDate());
+              resolve(true);
+            })
             .catch((e) => resolve(false));
         }, e => {
           reject(e);

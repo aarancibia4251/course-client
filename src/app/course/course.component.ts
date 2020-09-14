@@ -44,7 +44,6 @@ export class CourseComponent implements OnInit {
       )
       .finally(() => {
         this.listCourseObs$ = from(this.courseDbService.getAllCoursesFromDb());
-        this.storageSrv.setItem(Constants.SYNC, DateHelper.getCurrentDate());
       });
   }
 
