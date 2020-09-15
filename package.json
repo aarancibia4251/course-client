@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "build:prod": "ng build --prod --output-hashing none",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod --output-hashing none"
   },
   "private": true,
   "dependencies": {
@@ -21,10 +22,12 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@types/pouchdb": "^6.4.0",
+    "express": "^4.17.1",
     "guid-typescript": "^1.0.9",
     "moment": "^2.27.0",
     "ng-zorro-antd": "^9.1.2",
     "ngx-dropzone": "^2.2.2",
+    "path": "^0.12.7",
     "pouchdb": "^7.2.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
