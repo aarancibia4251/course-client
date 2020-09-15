@@ -29,6 +29,8 @@
               "src/app-sw.js",
               "src/pouchdb.min.js",
               "src/utils.js",
+              "src/server.js",
+              "src/Procfile",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
