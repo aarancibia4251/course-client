@@ -1,7 +1,7 @@
 importScripts('pouchdb.min.js');
 importScripts('utils.js');
-//const printLogMessage = (message) => console.log(message);
-const CACHE_INMMUTABLE = 'COURSE-CACHES-V2.0';
+
+const CACHE_INMMUTABLE = 'COURSE-CACHES-V3.0';
 
 const SYNC_REGISTER = {
   COURSE: 'sync-course'
@@ -16,6 +16,7 @@ const CONFIG = {
 
 const includeToCache = [
   '/app-sw.js',
+  '/Web.config',
 
   '/',
   '/favicon.ico',
@@ -30,6 +31,8 @@ const includeToCache = [
   '/runtime-es5.js',
   '/runtime-es2015.js',
   '/scripts.js',
+  '/pouchdb.min.js',
+  '/utils.js',
 
   '/styles.css',
   '/assets/animal/panda.js',
@@ -40,7 +43,6 @@ const includeToCache = [
 var dbOffline = new PouchDB('dbOffline');
 
 self.addEventListener("install", event => {
-  // console.log('[Service Worker] Installing Service Worker');
   event.waitUntil(
     caches.open(CACHE_INMMUTABLE)
       .then(cache => {
@@ -54,7 +56,6 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("activate", event => {
-  // console.log('[Service Worker] Activating Service Worker');
   const deleteCachePromise = caches.keys()
     .then(keys => {
       return Promise.all(keys.map(x => {
@@ -62,12 +63,11 @@ self.addEventListener("activate", event => {
       }));
     });
 
-  let promiseCleanCache = event.waitUntil(deleteCachePromise);
+  event.waitUntil(deleteCachePromise);
 });
 
 self.addEventListener("fetch", event => {
   if (event.request.url.toString().toLowerCase().indexOf('course') !== -1) {
-    // printLogMessage('[ServiceWorker]  indexOf...', event.request.url.toString().toLowerCase().indexOf('curso') !== -1);
     return;
   } else {
     event.respondWith(
@@ -87,7 +87,6 @@ self.addEventListener("fetch", event => {
 });
 
 self.addEventListener("sync", event => {
-  // console.log(event);
   if (event.tag === SYNC_REGISTER.COURSE) {
     event.waitUntil(
       dbOffline.allDocs({ include_docs: true })

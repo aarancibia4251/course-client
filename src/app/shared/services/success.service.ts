@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {NzMessageService} from "ng-zorro-antd";
-import {InfoMessageComponent} from "../info-message/info-message.component";
+import { NzNotificationService} from "ng-zorro-antd";
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +7,13 @@ import {InfoMessageComponent} from "../info-message/info-message.component";
 export class SuccessService {
 
   constructor(
-    private nzMessageService: NzMessageService
+    private nzMNotificationSrv: NzNotificationService
   ) { }
 
   showBasicSuccess(title: string, message: string) {
-
+    this.nzMNotificationSrv.success(
+      title,
+      message
+    );
   }
 }

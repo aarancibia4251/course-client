@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
+    "start:heroku": "node server.js",
     "start:prod": "node server.js",
     "build": "ng build --prod --output-hashing none",
     "build:prod": "ng build --prod --output-hashing none",

@@ -1,9 +1,9 @@
 <div class="course" nz-row>
-  <div nz-col [nzMd]="4"></div>
-  <div nz-col [nzMd]="16">
+  <div nz-col [nzMd]="4" [nzXs]="2"></div>
+  <div nz-col [nzMd]="16" [nzXs]="20">
     <div nz-row [nzJustify]="'space-between'">
       <h1>Bandeja de Cursos</h1>
-      <a routerLink="/crear">Nuevo Curso</a>
+      <a nz-button [nzType]="'primary'" class="course__new" routerLink="/crear">Nuevo Curso</a>
     </div>
     <hr />
     <nz-list class="course__list" nzBordered nzSize="small">
@@ -16,5 +16,5 @@
       </nz-list-item>
     </nz-list>
   </div>
-  <div nz-col [nzMd]="4"></div>
+  <div nz-col [nzMd]="4" [nzXs]="2"></div>
 </div>
