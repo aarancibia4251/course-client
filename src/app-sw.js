@@ -1,7 +1,7 @@
 importScripts('pouchdb.min.js');
 importScripts('utils.js');
 
-const CACHE_INMMUTABLE = 'COURSE-CACHES-V3.0';
+const CACHE_INMMUTABLE = 'COURSE-CACHES-V4.0';
 
 const SYNC_REGISTER = {
   COURSE: 'sync-course'
@@ -16,7 +16,6 @@ const CONFIG = {
 
 const includeToCache = [
   '/app-sw.js',
-  '/Web.config',
 
   '/',
   '/favicon.ico',
@@ -40,7 +39,7 @@ const includeToCache = [
 
 ];
 
-var dbOffline = new PouchDB('dbOffline');
+const dbOffline = new PouchDB('dbOffline');
 
 self.addEventListener("install", event => {
   event.waitUntil(
@@ -51,7 +50,7 @@ self.addEventListener("install", event => {
       .then(() => {
         return self.skipWaiting();
       })
-      .catch(console.log)
+      .catch((e) => console.log(e))
   );
 });
 
