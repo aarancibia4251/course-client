@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { CourseComponent } from './course/course.component';
 import { DropFileComponent } from './drop-file/drop-file.component';
 
 const routes: Routes = [
@@ -22,11 +21,6 @@ const routes: Routes = [
   {
     path: 'drop',
     component: DropFileComponent,
-  },
-  {
-    path: 'diagnostic',
-    loadChildren: () =>
-      import('./diagnostic/diagnostic.module').then((m) => m.DiagnosticModule),
   },
 ];
 

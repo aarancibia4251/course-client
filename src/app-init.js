@@ -1,4 +1,4 @@
-if ('serviceWorker' in navigator && document.domain != 'localhost'){
+if ('serviceWorker' in navigator){
   navigator.serviceWorker.register('/app-sw.js')
     .then(() => {
       console.log('con service worker')

@@ -8,7 +8,7 @@ const SYNC_REGISTER = {
 };
 
 const CONFIG = {
-  URL_BASE: 'https://course-ajas.herokuapp.com/api/',
+  URL_BASE: 'http://localhost:3000/api/',
   ENTITIES: {
     COURSE: 'course'
   }
