@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { es_ES } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import {APP_BASE_HREF, registerLocaleData} from '@angular/common';
 import es from '@angular/common/locales/es';
 import { DropFileComponent } from './drop-file/drop-file.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -28,7 +28,10 @@ registerLocaleData(es);
     NgxDropzoneModule,
     CourseModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: es_ES }],
+  providers: [
+    { provide: NZ_I18N, useValue: es_ES },
+    { provide: APP_BASE_HREF, useValue: '/'}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
