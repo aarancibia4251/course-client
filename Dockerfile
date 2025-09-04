@@ -1,4 +1,4 @@
-FROM node:12.15.1
+FROM node:14.20.0
 LABEL authors="aarancis"
 
 EXPOSE 4200

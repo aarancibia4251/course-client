@@ -5,12 +5,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CourseDbService } from '../../service/course-db.service';
 import { CoursePresenter } from './course.presenter';
 import { FormBuilder } from '@angular/forms';
-import {DateHelper} from "../../../utils/DateHelper";
-import {Guid} from "guid-typescript";
-import {Constants} from "../../../utils/Constants";
+import {DateHelper} from '../../../utils/DateHelper';
+import {Guid} from 'guid-typescript';
+import {Constants} from '../../../utils/Constants';
 import { CourseDataRepositoryService } from '../../repository/course-data-repository.service';
-import {ErrorService} from "../../../shared/services/error.service";
-import {SuccessService} from "../../../shared/services/success.service";
+import {ErrorService} from '../../../shared/services/error.service';
+import {SuccessService} from '../../../shared/services/success.service';
 
 @Component({
   selector: 'app-create-course',
