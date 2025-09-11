@@ -8,6 +8,6 @@ import { InfoMessageComponent } from './info-message/info-message.component';
   declarations: [InfoMessageComponent],
   imports: [
     CommonModule
-  ]
+  ],
 })
 export class SharedModule { }

@@ -64,6 +64,7 @@ export class CreateCourseComponent implements OnInit {
         this.courseId = course.courseId;
       }
       this.successSrv.showBasicSuccess('Course', 'Se registraron los datos');
+      this.router.navigate(['/course']);
     } catch (e) {
       this.errorSrv.showBasicError('Course', 'No se pudo guardar los datos');
     }

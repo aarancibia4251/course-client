@@ -14,6 +14,7 @@ import { DropFileComponent } from './drop-file/drop-file.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { CourseModule } from './course/course.module';
 import { UpdateAppComponent } from './update-app/update-app.component';
+import {NzNotificationModule} from 'ng-zorro-antd/notification';
 
 registerLocaleData(es);
 
@@ -27,6 +28,7 @@ registerLocaleData(es);
     BrowserAnimationsModule,
     NgxDropzoneModule,
     CourseModule,
+    NzNotificationModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }, { provide: APP_BASE_HREF, useValue: '/pwa-project' }],
   bootstrap: [AppComponent],
