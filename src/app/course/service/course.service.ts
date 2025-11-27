@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
 import { Course } from '../model/course.model';
 import { environment } from '../../../environments/environment';
-import {catchError, map, tap} from 'rxjs/operators';
 import { CourseMapper } from '../mapper/CourseMapper';
 import { CourseEntity } from '../model/course-entity.model';
 import { CourseDbService } from './course-db.service';
-import {bodyCourseToSave} from "../dto/course-dto.interface";
-import {SuccessPouch} from "../model/success-pouch";
-import {DateHelper} from "../../utils/DateHelper";
-import {StorageService} from "./storage.service";
-import {Constants} from "../../utils/Constants";
+import {bodyCourseToSave} from '../dto/course-dto.interface';
+import {DateHelper} from '../../utils/DateHelper';
+import {StorageService} from './storage.service';
+import {Constants} from '../../utils/Constants';
 
 @Injectable({
   providedIn: 'root',

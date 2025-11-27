@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/appsteps",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
             "polyfills": "src/polyfills.ts",
@@ -26,7 +26,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/app-sw.js",
               "src/pouchdb.min.js",
               "src/utils.js",
               "src/server.js",
@@ -42,9 +41,7 @@
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/app-init.js"
-            ],
+            "scripts": [],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
               "libraryName": "appsteps",
@@ -67,6 +64,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "deployUrl": "https://arancibia.b-cdn.net/pwa-project/",
               "budgets": [
                 {
                   "type": "initial",
