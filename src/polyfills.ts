@@ -60,4 +60,4 @@
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-(window as any).global = window.global || window.globalThis;
+(window as any).global = window;

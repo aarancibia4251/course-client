@@ -41,7 +41,9 @@
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/polyfills.ts"
+            ],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
               "libraryName": "appsteps",
