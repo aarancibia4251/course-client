@@ -41,9 +41,7 @@
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/global-shim.js"
-            ],
+            "scripts": [],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
               "libraryName": "appsteps",
