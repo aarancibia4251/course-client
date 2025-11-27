@@ -42,7 +42,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/polyfills.ts"
+              "src/global-shim.js"
             ],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
