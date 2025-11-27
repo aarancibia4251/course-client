@@ -10,7 +10,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --output-hashing none",
     "build:mf": "ng build appsteps --prod --deploy-url http://localhost:4200/",
     "serve:mf": "ng s --project appsteps --disable-host-check --host 0.0.0.0 --port 4200 --deploy-url http://localhost:4200/ --live-reload false"
   },
