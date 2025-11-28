@@ -2,7 +2,7 @@ name: Upload to Bunny Storage
 
 on:
   push:
-    branches: [ feature/microfront ]
+    branches: [ develop ]
 
 jobs:
   deploy:
